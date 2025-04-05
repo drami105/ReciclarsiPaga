@@ -1,0 +1,90 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+}
+
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.left-panel {
+  background: url('../../../assets/bg1.jpg') no-repeat center center / cover;
+  padding: 20px;
+  color: white;
+  width: 70%;
+}
+
+.right-panel {
+  background-color: #f5f5f5;
+  padding: 20px;
+  width: 30%;
+  float: left;
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.btn.ingresar {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 30px;
+}
+
+.btn.ingresar:hover {
+  background-color: #45a049;
+}
+
+.info-box {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  height: 86vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-box h2 {
+  margin-top: 0;
+}
+
+.info-box em {
+  font-size: 0.9em;
+  color: gray;
+}
+
+.divTransparente{
+  background-color:  rgba(166, 166, 166, 0.67);
+}
+
+.imagen-container {
+  width: 60%;
+  margin: auto;
+}
+.imagen-container img {
+  width: 100%;
+  height: auto;
+}
