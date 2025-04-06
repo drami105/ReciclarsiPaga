@@ -74,8 +74,12 @@ input {
   height: auto;
 }
 
+.form-control{
+    padding: 5px 10px;
+    height: 38px;
+}
+
 .form-label{
   color: black;
   font-weight: bold;
 }
-

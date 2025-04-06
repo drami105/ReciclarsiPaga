@@ -1,0 +1,127 @@
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <br>
+      <h1 class="divTransparente">Reciclar Si Paga | Registro</h1>
+      <br>
+      <div class="col-12 col-md-12 divTransparente" style="padding-left: 1%; padding-right: 1%;">
+
+        <form [formGroup]="registroForm">
+
+          <div class="row mb-1">
+            <div class="col-12 col-md-3">
+              <label class="form-label">Tipo Documento:</label>
+              <select formControlName="tipoDocumento" class="form-select">
+                <option value="">Seleccione</option>
+                <option value="cc">Cédula Ciudadanía</option>
+                <option value="ti">Tarjeta Identidad</option>
+                <option value="ce">Cédula Extranjería</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label class="form-label">Documento:</label>
+              <input type="text" formControlName="documento" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="col-12 col-md-3">
+              <label class="form-label">Nombres:</label>
+              <input type="text" placeholder="Primer Nombre" formControlName="nombres" class="form-control form-control-sm" />
+            </div>
+            <div class="col-12 col-md-3">
+              <label>&nbsp;</label>
+              <input type="text" placeholder="Segundo Nombre" formControlName="segundoNombre" class="form-control form-control-sm" />
+            </div>
+
+
+            <div class="col-12 col-md-3">
+              <label class="form-label">Apellidos:</label>
+              <input type="text" placeholder="Primer Apellido" formControlName="apellidos" class="form-control form-control-sm" />
+            </div>
+            <div class="col-12 col-md-3">
+              <label>&nbsp;</label>
+              <input type="text" placeholder="Segundo Apellido" formControlName="segundoApellido"
+                class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="col-12 col-md-3">
+              <label class="form-label">Celular:</label>
+              <input type="text" [maxlength]="10" formControlName="celular" class="form-control form-control-sm" />
+            </div>
+
+            <div class="col-12 col-md-5">
+              <label class="form-label">E-mail:</label>
+              <input type="email" placeholder="usuario@dominio.com.co" formControlName="email" class="form-control form-control-sm" />
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">Dirección:</label>
+              <input type="text" formControlName="direccion" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="col-12 col-md-3">
+              <label class="form-label">Ciudad:</label>
+              <select formControlName="ciudad" class="form-select">
+                <option value="">Seleccione ciudad</option>
+                <option value="medellin">Medellín</option>
+                <option value="bogota">Bogotá</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label class="form-label">Barrio:</label>
+              <select formControlName="barrio" class="form-select">
+                <option value="">Buscar elementos</option>
+                <option value="barrio1">Barrio 1</option>
+                <option value="barrio2">Barrio 2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="col-12 col-md-3">
+              <label class="form-label">Contraseña:</label>
+              <input type="password" formControlName="contrasena" class="form-control form-control-sm">
+            </div>
+
+            <div class="col-12 col-md-3">
+              <label class="form-label">Confirmación:</label>
+              <input type="password" formControlName="confirmacion" class="form-control form-control-sm" />
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="col-12 col-md-3">
+              <button class="btn success" type="submit">Registrarse</button>
+            </div>
+            <div class="col-12 col-md-3">
+              <button class="btn danger" type="button" [routerLink]="['/login']">Cancelar</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="info-box">
+        <div class="imagen-container">
+          <img src="../../../assets/informacion.gif" alt="informacion">
+        </div>
+        <hr>
+        <p style="text-align: justify;">
+          Reciclar Si Paga, es una solución para las familias que de forma responsable desean obtener beneficios, por
+          reportar en la aplicación la generación de reciclaje producido en los hogares, y realizar la correcta
+          disposición y entrega a los agentes autorizados.
+        </p>
+        <br><br><br>
+        <p><em>*Revisar disponibilidad de cobertura</em></p>
+      </div>
+    </div>
+  </div>
+</body>
