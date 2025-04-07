@@ -97,7 +97,7 @@
 
           <div class="row mb-1">
             <div class="col-12 col-md-3">
-              <button class="btn success" type="submit">Registrarse</button>
+              <button class="btn success" (click)="showSuccess()">Registrarse</button>
             </div>
             <div class="col-12 col-md-3">
               <button class="btn danger" type="button" [routerLink]="['/login']">Cancelar</button>
@@ -111,7 +111,7 @@
     <div class="right-panel">
       <div class="info-box">
         <div class="imagen-container">
-          <img src="../../../assets/informacion.gif" alt="informacion">
+          <img src="../../../assets/informacion.png" alt="informacion">
         </div>
         <hr>
         <p style="text-align: justify;">

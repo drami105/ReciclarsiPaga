@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+
   registroForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -34,10 +35,15 @@ export class RegistroComponent implements OnInit {
   onSubmit() {
     if (this.registroForm.valid) {
       console.log('Formulario enviado', this.registroForm.value);
+
       // Aquí puedes agregar tu lógica para enviar los datos a un servicio
     } else {
-      console.log('Formulario no válido');
+
     }
+  }
+
+  showSuccess() {
+
   }
 
   cancelar(){
