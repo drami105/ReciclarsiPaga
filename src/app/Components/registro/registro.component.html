@@ -11,7 +11,7 @@
           <div class="row mb-1">
             <div class="col-12 col-md-3">
               <label class="form-label">Tipo Documento:</label>
-              <select formControlName="tipoDocumento" class="form-select">
+              <select formControlName="tipoDocumento" class="form-control">
                 <option value="">Seleccione</option>
                 <option value="cc">Cédula Ciudadanía</option>
                 <option value="ti">Tarjeta Identidad</option>
@@ -31,7 +31,7 @@
               <input type="text" placeholder="Primer Nombre" formControlName="nombres" class="form-control form-control-sm" />
             </div>
             <div class="col-12 col-md-3">
-              <label>&nbsp;</label>
+              <label class="form-label">&nbsp;</label>
               <input type="text" placeholder="Segundo Nombre" formControlName="segundoNombre" class="form-control form-control-sm" />
             </div>
 
@@ -41,7 +41,7 @@
               <input type="text" placeholder="Primer Apellido" formControlName="apellidos" class="form-control form-control-sm" />
             </div>
             <div class="col-12 col-md-3">
-              <label>&nbsp;</label>
+              <label class="form-label">&nbsp;</label>
               <input type="text" placeholder="Segundo Apellido" formControlName="segundoApellido"
                 class="form-control form-control-sm" />
             </div>
@@ -66,7 +66,7 @@
           <div class="row mb-1">
             <div class="col-12 col-md-3">
               <label class="form-label">Ciudad:</label>
-              <select formControlName="ciudad" class="form-select">
+              <select formControlName="ciudad" class="form-control">
                 <option value="">Seleccione ciudad</option>
                 <option value="medellin">Medellín</option>
                 <option value="bogota">Bogotá</option>
@@ -75,7 +75,7 @@
 
             <div class="col-12 col-md-3">
               <label class="form-label">Barrio:</label>
-              <select formControlName="barrio" class="form-select">
+              <select formControlName="barrio" class="form-control">
                 <option value="">Buscar elementos</option>
                 <option value="barrio1">Barrio 1</option>
                 <option value="barrio2">Barrio 2</option>
@@ -100,7 +100,7 @@
               <button class="btn success" (click)="showSuccess()">Registrarse</button>
             </div>
             <div class="col-12 col-md-3">
-              <button class="btn danger" type="button" [routerLink]="['/login']">Cancelar</button>
+              <button class="btn danger" type="button" [routerLink]="['/login']">Regresar</button>
             </div>
           </div>
         </form>

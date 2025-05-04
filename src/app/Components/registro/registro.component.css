@@ -61,10 +61,6 @@ input {
   color: gray;
 }
 
-.divTransparente{
-  background-color:  rgba(166, 166, 166, 0.67);
-}
-
 .imagen-container {
   width: 60%;
   margin: auto;
@@ -74,10 +70,6 @@ input {
   height: auto;
 }
 
-.form-control{
-    padding: 5px 10px;
-    height: 38px;
-}
 
 .form-label{
   color: black;

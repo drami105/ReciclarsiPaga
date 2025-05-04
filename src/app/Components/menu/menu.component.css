@@ -1,0 +1,37 @@
+.menu-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 60px; /* espacio para footer */
+}
+
+.card {
+  background-color: #f0f0f0;
+  padding: 20px;
+  width: 350px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.action-button {
+  background-color: #43a047;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+img {
+  transition: transform 0.3s ease;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+

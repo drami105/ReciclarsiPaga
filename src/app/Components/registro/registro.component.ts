@@ -1,5 +1,7 @@
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -10,7 +12,7 @@ export class RegistroComponent implements OnInit {
 
   registroForm: UntypedFormGroup;
 
-  constructor(private fb: UntypedFormBuilder) {
+  constructor(private toastr: ToastrService,private fb: UntypedFormBuilder) {
     this.registroForm = this.fb.group({
       tipoDocumento: ['', Validators.required],
       documento: ['', Validators.required],
@@ -42,8 +44,23 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  showSuccess() {
+  showSuccess1() {
+    this.toastr.success('¡Operación exitosa!', 'Éxito', {
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+    });
+  }
 
+  showSuccess(){
+    Swal.fire({
+      title: '¡Éxito!',
+      text: 'La operación fue exitosa.',
+      icon: 'success',
+      confirmButtonText: '  Aceptar  ',
+      customClass: {
+        confirmButton: 'btn success'
+      }
+    });
   }
 
   cancelar(){

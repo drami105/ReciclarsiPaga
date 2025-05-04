@@ -203,7 +203,7 @@ button.toast-close-button {
 }
 
 .btn.success:hover {
-  background-color: #5cad60;
+  background-color: #6fcf74;
 }
 
 .btn.danger{
@@ -218,5 +218,24 @@ button.toast-close-button {
 }
 
 .btn.danger:hover {
-  background-color: #9b5a5a;
+  background-color: #c26e6e;
+}
+
+.btn.info{
+  background-color: #382ebb;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 30px;
+}
+
+.btn.info:hover {
+  background-color: rgb(120, 113, 223);
+}
+
+.divTransparente{
+  background-color:  rgba(166, 166, 166, 0.67);
 }

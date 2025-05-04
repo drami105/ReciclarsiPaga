@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <a routerLink="/layout"><span class="glyphicon glyphicon-home icono-grande"></span></a>
+  </div>
+  <div class="navbar-center">
+    <span class="glyphicon glyphicon-map-marker icono-grande"></span>
+    <span>Ubicación</span>
+  </div>
+  <div class="navbar-center">
+    <span class="glyphicon glyphicon-user icono-grande"></span>
+    <span>usuario&#64;gmail.com</span>
+  </div>
+  <div class="navbar-right">
+    <a routerLink="/login"><span class="glyphicon glyphicon-log-out icono-grande"></span></a>
+  </div>
+</nav>
+
+<body>
+  <app-menu *ngIf="mostrarMenu"></app-menu>
+  <router-outlet></router-outlet>
+</body>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <span>©2025</span>
+</footer>
+

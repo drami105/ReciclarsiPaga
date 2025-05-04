@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="left-panel">
+    <div class="col-12 col-md-12 divTransparente" style="padding-left: 1%; padding-right: 1%;">
+
+      <form >
+        <div class="row mb-1">
+          <div class="col-12 col-md-12">
+            <h4><label class="form-label">Solicitud recolección</label></h4>
+          </div>
+        </div>
+        <div class="row mb-1">
+          <div class="col-12 col-md-3">
+            <label class="form-label">Documento:</label>
+            <input type="text" [attr.disabled]="true" formControlName="documento" class="form-control form-control-sm" />
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label">Nombres:</label>
+            <input type="text" [attr.disabled]="true" formControlName="nombres" class="form-control form-control-sm" />
+          </div>
+
+        </div>
+
+        <div class="row mb-1">
+
+          <div class="col-12 col-md-9">
+            <label class="form-label">Dirección:</label>
+            <input type="text" [attr.disabled]="true" formControlName="nombres" class="form-control form-control-sm" />
+          </div>
+
+        </div>
+
+        <div class="row mb-1">
+
+          <div class="col-12 col-md-3">
+            <label class="form-label">Kilogramos:</label>
+            <input type="number" formControlName="contrasena" class="form-control form-control-sm">
+          </div>
+
+          <div class="col-12 col-md-9">
+            <label class="form-label">Observación:</label>
+            <textarea name="" id=""></textarea>
+          </div>
+        </div>
+
+        <div class="row mb-1">
+          <div class="col-12 col-md-3">
+            <button class="btn success" >Solicitar</button>
+          </div>
+          <div class="col-12 col-md-3">
+            <button class="btn danger" type="button" [routerLink]="['/layout']">Cancelar</button>
+          </div>
+          <div class="col-12 col-md-3">
+            <button class="btn info" type="button" [routerLink]="['/layouth']">Mis solicitudes</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="right-panel" style="margin-top: 2%;">
+    <div class="info-box">
+      <div class="imagen-container">
+        <img src="../../../assets/informacion.png" alt="informacion">
+      </div>
+      <hr>
+      <p style="text-align: justify;">
+        Una vez registrado tu aporte, es necesario esperar la confirmación por parte de los agentes encargados de la recolección para que tus puntos sean incrementados.
+      </p>
+      <br>
+    </div>
+  </div>
+</div>
