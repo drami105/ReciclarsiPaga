@@ -2,17 +2,22 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { HttpClientModule } from '@angular/common/http';
+import { CiudadService } from 'src/services/ciudad.service';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements OnInit {
 
+
+export class RegistroComponent implements OnInit {
+  ciudades: any[] = [];
+  barrios: any[] = [];
   registroForm: UntypedFormGroup;
 
-  constructor(private toastr: ToastrService,private fb: UntypedFormBuilder) {
+  constructor(private toastr: ToastrService,private fb: UntypedFormBuilder, private ciudadService: CiudadService) {
     this.registroForm = this.fb.group({
       tipoDocumento: ['', Validators.required],
       documento: ['', Validators.required],
@@ -32,6 +37,8 @@ export class RegistroComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getCiudades();
+    this.getBarrios();
   }
 
   onSubmit() {
@@ -65,5 +72,33 @@ export class RegistroComponent implements OnInit {
 
   cancelar(){
 
+  }
+
+  getCiudades(){
+    this.ciudadService.getCiudades().subscribe({
+      next: (data) => {
+        this.ciudades = data;
+      },
+      error: (err) => {
+        this.toastr.error('Error recuperando datos'+ err, 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right',
+        });
+      }
+    });
+  }
+
+  getBarrios(){
+    this.ciudadService.getBarrios().subscribe({
+      next: (data) => {
+        this.barrios = data;
+      },
+      error: (err) => {
+        this.toastr.error('Error recuperando datos'+ err, 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right',
+        });
+      }
+    });
   }
 }

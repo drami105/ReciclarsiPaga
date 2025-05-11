@@ -68,8 +68,7 @@
               <label class="form-label">Ciudad:</label>
               <select formControlName="ciudad" class="form-control">
                 <option value="">Seleccione ciudad</option>
-                <option value="medellin">Medellín</option>
-                <option value="bogota">Bogotá</option>
+                <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">{{ ciudad.descripcion }}</option>
               </select>
             </div>
 
@@ -77,8 +76,7 @@
               <label class="form-label">Barrio:</label>
               <select formControlName="barrio" class="form-control">
                 <option value="">Buscar elementos</option>
-                <option value="barrio1">Barrio 1</option>
-                <option value="barrio2">Barrio 2</option>
+                <option *ngFor="let barrio of barrios" [value]="barrio.idBario">{{ barrio.descripcion }}</option>
               </select>
             </div>
           </div>

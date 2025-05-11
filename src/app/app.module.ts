@@ -11,6 +11,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { LayouthComponent } from './Components/layouth/layouth.component';
 import { MenuComponent } from './Components/menu/menu.component';
 import { SolicitudComponent } from './Components/solicitud/solicitud.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { SolicitudComponent } from './Components/solicitud/solicitud.component';
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot()
   ],
   providers: [],
