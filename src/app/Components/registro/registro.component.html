@@ -11,11 +11,9 @@
           <div class="row mb-1">
             <div class="col-12 col-md-3">
               <label class="form-label">Tipo Documento:</label>
-              <select formControlName="tipoDocumento" class="form-control">
-                <option value="">Seleccione</option>
-                <option value="cc">Cédula Ciudadanía</option>
-                <option value="ti">Tarjeta Identidad</option>
-                <option value="ce">Cédula Extranjería</option>
+              <select formControlName="idTipoDocumento" class="form-control">
+                <option *ngFor="let tipooDocumento of tiposDocumento" [value]="tipooDocumento.idTipoDocumento">{{ tipooDocumento.descripcion }}</option>
+
               </select>
             </div>
 
@@ -28,7 +26,7 @@
           <div class="row mb-1">
             <div class="col-12 col-md-3">
               <label class="form-label">Nombres:</label>
-              <input type="text" placeholder="Primer Nombre" formControlName="nombres" class="form-control form-control-sm" />
+              <input type="text" placeholder="Primer Nombre" formControlName="primerNombre" class="form-control form-control-sm" />
             </div>
             <div class="col-12 col-md-3">
               <label class="form-label">&nbsp;</label>
@@ -38,7 +36,7 @@
 
             <div class="col-12 col-md-3">
               <label class="form-label">Apellidos:</label>
-              <input type="text" placeholder="Primer Apellido" formControlName="apellidos" class="form-control form-control-sm" />
+              <input type="text" placeholder="Primer Apellido" formControlName="primerApellido" class="form-control form-control-sm" />
             </div>
             <div class="col-12 col-md-3">
               <label class="form-label">&nbsp;</label>
@@ -50,12 +48,12 @@
           <div class="row mb-1">
             <div class="col-12 col-md-3">
               <label class="form-label">Celular:</label>
-              <input type="text" [maxlength]="10" formControlName="celular" class="form-control form-control-sm" />
+              <input type="text" [maxlength]="10" formControlName="telefono" class="form-control form-control-sm" />
             </div>
 
             <div class="col-12 col-md-5">
               <label class="form-label">E-mail:</label>
-              <input type="email" placeholder="usuario@dominio.com.co" formControlName="email" class="form-control form-control-sm" />
+              <input type="email" placeholder="usuario@dominio.com.co" formControlName="correo" class="form-control form-control-sm" />
             </div>
             <div class="col-12 col-md-4">
               <label class="form-label">Dirección:</label>
@@ -66,17 +64,15 @@
           <div class="row mb-1">
             <div class="col-12 col-md-3">
               <label class="form-label">Ciudad:</label>
-              <select formControlName="ciudad" class="form-control">
-                <option value="">Seleccione ciudad</option>
+              <select formControlName="idCiudad" class="form-control" (change)="filtrarBarrios($event)">
                 <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">{{ ciudad.descripcion }}</option>
               </select>
             </div>
 
             <div class="col-12 col-md-3">
               <label class="form-label">Barrio:</label>
-              <select formControlName="barrio" class="form-control">
-                <option value="">Buscar elementos</option>
-                <option *ngFor="let barrio of barrios" [value]="barrio.idBario">{{ barrio.descripcion }}</option>
+              <select formControlName="idBarrio" class="form-control">
+                <option *ngFor="let barrio of barriosFiltrados" [value]="barrio.idBarrio">{{ barrio.descripcion }}</option>
               </select>
             </div>
           </div>
@@ -95,7 +91,7 @@
 
           <div class="row mb-1">
             <div class="col-12 col-md-3">
-              <button class="btn success" (click)="showSuccess()">Registrarse</button>
+              <button class="btn success" (click)="guardarPersona()">Registrarse</button>
             </div>
             <div class="col-12 col-md-3">
               <button class="btn danger" type="button" [routerLink]="['/login']">Regresar</button>

@@ -4,14 +4,14 @@
   </div>
   <div class="navbar-center">
     <span class="glyphicon glyphicon-map-marker icono-grande"></span>
-    <span>Ubicación</span>
+    <span>{{ubicacion}}</span>
   </div>
   <div class="navbar-center">
     <span class="glyphicon glyphicon-user icono-grande"></span>
-    <span>usuario&#64;gmail.com</span>
+    <span>{{correo}}</span>
   </div>
   <div class="navbar-right">
-    <a routerLink="/login"><span class="glyphicon glyphicon-log-out icono-grande"></span></a>
+    <a href="#" (click)="salir()"><span class="glyphicon glyphicon-log-out icono-grande"></span></a>
   </div>
 </nav>
 
