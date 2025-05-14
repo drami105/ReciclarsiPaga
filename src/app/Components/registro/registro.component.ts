@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { HttpClientModule } from '@angular/common/http';
-import { CiudadService } from 'src/services/general.service';
+import { GeneralService } from 'src/services/general.service';
 import { PersonaService } from 'src/services/persona.service';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,7 @@ export class RegistroComponent implements OnInit {
   tiposDocumento: any[] = [];
   registroForm: UntypedFormGroup;
 
-  constructor(private toastr: ToastrService, private fb: UntypedFormBuilder, private ciudadService: CiudadService, private personaService: PersonaService, private router: Router) {
+  constructor(private toastr: ToastrService, private fb: UntypedFormBuilder, private ciudadService: GeneralService, private personaService: PersonaService, private router: Router) {
     this.registroForm = this.fb.group({
       idTipoDocumento: [null, Validators.required],
       documento: [null, Validators.required],

@@ -2,7 +2,7 @@
   <div class="left-panel">
     <div class="col-12 col-md-12 divTransparente" style="padding-left: 1%; padding-right: 1%;">
 
-      <form >
+      <form autocomplete="off" [formGroup]="solicitudForm" >
         <div class="row mb-1">
           <div class="col-12 col-md-12">
             <h4><label class="form-label">Solicitud recolección</label></h4>
@@ -25,7 +25,7 @@
 
           <div class="col-12 col-md-9">
             <label class="form-label">Dirección:</label>
-            <input type="text" [attr.disabled]="true" formControlName="nombres" class="form-control form-control-sm" />
+            <input type="text" [attr.disabled]="true" formControlName="direccion" class="form-control form-control-sm" />
           </div>
 
         </div>
@@ -34,24 +34,25 @@
 
           <div class="col-12 col-md-3">
             <label class="form-label">Kilogramos:</label>
-            <input type="number" formControlName="contrasena" class="form-control form-control-sm">
+            <input type="number" formControlName="kilogramosIni" class="form-control form-control-sm">
           </div>
 
-          <div class="col-12 col-md-9">
+          <div class="col-12 col-md-6">
             <label class="form-label">Observación:</label>
-            <textarea name="" id=""></textarea>
+            <textarea class="form-control" formControlName="observacion"></textarea>
           </div>
+
         </div>
 
         <div class="row mb-1">
           <div class="col-12 col-md-3">
-            <button class="btn success" >Solicitar</button>
+            <button class="btn success" (click)="solicitud()" >Solicitar</button>
           </div>
           <div class="col-12 col-md-3">
             <button class="btn danger" type="button" [routerLink]="['/layout']">Cancelar</button>
           </div>
           <div class="col-12 col-md-3">
-            <button class="btn info" type="button" [routerLink]="['/layouth']">Mis solicitudes</button>
+            <button class="btn info" (click)="consultarSolicitudes()" type="button" #ModalSolicitudes data-bs-toggle="modal" data-bs-target="#ModalSolicitudes" >Mis solicitudes</button>
           </div>
         </div>
       </form>
@@ -72,3 +73,64 @@
     </div>
   </div>
 </div>
+
+<div id="ModalSolicitudes" class="modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><strong>Mis Solicitudes</strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>En esta sección, visualizarás el estado de tus solicitudes de recolección.</p>
+        <hr>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Solicitud</th>
+              <th>Fecha solicitud</th>
+              <th>kg. reportados</th>
+              <th>Estado</th>
+              <th>Fecha recolección</th>
+              <th>kg. confirmados</th>
+              <th>Agente encargado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let solicitud of dataSolicitudes">
+              <td>
+                {{ solicitud.idSolicitud }}
+              </td>
+              <td>
+                {{ solicitud.fechaSolicitud | date: 'yyyy/MM/dd HH:mm:ss'}}
+              </td>
+              <td>
+                {{ solicitud.kilogramosIni }}
+              </td>
+              <td>
+                <span
+                  class="badge"
+                  [ngClass]="solicitud.estado ? 'bg-success' : 'bg-warning'">
+                  {{ solicitud.estado ? 'Gestionado' : 'Pendiente' }}
+                </span>
+              </td>
+              <td>
+                {{ solicitud.fechaRecoleccion | date: 'yyyy/MM/dd HH:mm:ss' }}
+              </td>
+              <td>
+                {{ solicitud.kilogramosConf }}
+              </td>
+              <td>
+                {{ solicitud.usuarioRecole }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
