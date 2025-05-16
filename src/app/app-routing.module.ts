@@ -4,6 +4,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegistroComponent } from './Components/registro/registro.component';
 import { LayouthComponent } from './Components/layouth/layouth.component';
 import { SolicitudComponent } from './Components/solicitud/solicitud.component';
+import { BeneficiosComponent } from './Components/beneficios/beneficios.component';
+import { ActualizacionComponent } from './Components/actualizacion/actualizacion.component';
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'layout', component: LayouthComponent,
   children: [
     { path: 'solicitud', component: SolicitudComponent },
+    { path: 'beneficios', component: BeneficiosComponent },
+    { path: 'actualizacion', component: ActualizacionComponent }
   ]},
   { path: '**', redirectTo: 'login' }
 ];

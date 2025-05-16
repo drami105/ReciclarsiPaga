@@ -12,6 +12,8 @@ import { LayouthComponent } from './Components/layouth/layouth.component';
 import { MenuComponent } from './Components/menu/menu.component';
 import { SolicitudComponent } from './Components/solicitud/solicitud.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BeneficiosComponent } from './Components/beneficios/beneficios.component';
+import { ActualizacionComponent } from './Components/actualizacion/actualizacion.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     LayouthComponent,
     MenuComponent,
     SolicitudComponent,
+    BeneficiosComponent,
+    ActualizacionComponent,
   ],
   imports: [
     BrowserModule,

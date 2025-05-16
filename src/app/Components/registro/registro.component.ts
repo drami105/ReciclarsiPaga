@@ -46,16 +46,6 @@ export class RegistroComponent implements OnInit {
     this.getTiposDocumento();
   }
 
-  onSubmit() {
-    if (this.registroForm.valid) {
-      console.log('Formulario enviado', this.registroForm.value);
-
-      // Aquí puedes agregar tu lógica para enviar los datos a un servicio
-    } else {
-
-    }
-  }
-
   showSuccess1() {
     this.toastr.success('¡Operación exitosa!', 'Éxito', {
       timeOut: 3000,

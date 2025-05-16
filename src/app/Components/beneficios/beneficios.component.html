@@ -1,0 +1,46 @@
+<br>
+<br>
+<div class="container" style="background-color: rgba(253, 255, 255, 0.541);">
+<br>
+<br>
+  <div class="carousel-container">
+    <button class="arrow left" (click)="scrollLeft()">&#10094;</button>
+
+    <div class="carousel-wrapper">
+      <div class="carousel" [style.transform]="'translateX(-' + currentOffset + '%)'">
+        <div class="card" *ngFor="let beneficio of visibleBeneficios" #ModalRedimir data-bs-toggle="modal" data-bs-target="#ModalRedimir">
+          <img [src]="beneficio.imagen" alt="{{ beneficio.titulo }}" />
+          <h4>{{ beneficio.titulo }}</h4>
+          <p>Puntos: {{ beneficio.puntos }}</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="arrow right" (click)="scrollRight()">&#10095;</button>
+  </div>
+
+  <p class="mensaje-puntos">
+    Actualmente cuentas con {{ puntosUsuario }} puntos. Para redimir algún beneficio, da clic sobre el ítem que desees.
+    Si te alcanza, te entregaremos un código para que redimas tu premio.
+  </p>
+</div>
+
+
+<div id="ModalRedimir" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><strong></strong></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="align-items: center; text-align: center;" >
+        <h4><strong>Código para redimir:</strong></h4>
+        <input type="text" class="form-control" disabled value="ASD12312ASD123123ASD123" style="text-align: center;">
+        <p>Con este código podrá redimir su beneficio.</p>
+        <br>
+        <br>
+        <p><strong>¡Gracias!</strong> por tu compromiso con el medio ambiente</p>
+      </div>
+    </div>
+  </div>
+</div>

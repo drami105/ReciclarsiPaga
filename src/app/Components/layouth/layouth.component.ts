@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-layouth',
@@ -8,35 +9,51 @@ import { Router } from '@angular/router';
 })
 export class LayouthComponent implements OnInit {
   mostrarMenu = true;
-  resultStore : any = null;
-  ubicacion : any = '';
-  correo : any = '';
+  resultStore: any = null;
+  ubicacion: any = '';
+  correo: any = '';
 
   ngOnInit(): void {
-      try {
-       let data : string | null = localStorage.getItem('Data');
-        if(data != null){
-          this.resultStore= JSON.parse(data)
-          this.ubicacion=this.resultStore.direccion;
-          this.correo=this.resultStore.correo;
-        }else{
-          this.router.navigateByUrl('/login')
-          localStorage.clear()
-        }
-      } catch (error) {
+    try {
+      let data: string | null = localStorage.getItem('Data');
+      if (data != null) {
+        this.resultStore = JSON.parse(data)
+        this.ubicacion = this.resultStore.direccion;
+        this.correo = this.resultStore.correo;
 
-      }
-  }
+        this.evaluarRuta(this.router.url); // Evaluación inicial
 
-  constructor(private router: Router) {
-    this.router.events.subscribe(() => {
-      this.mostrarMenu = !this.router.url.includes('/layout/solicitud');
-    });
-  }
+        this.router.events.pipe(
+          filter(event => event instanceof NavigationEnd)
+        ).subscribe(event => {
+          const navigation = event as NavigationEnd;
+          this.evaluarRuta(navigation.urlAfterRedirects);
+        });
 
-  salir(){
-    this.router.navigateByUrl('/login')
-    localStorage.clear()
+    } else {
+      this.router.navigateByUrl('/login')
+      localStorage.clear()
+    }
+  } catch(error) {
+
   }
+}
+
+constructor(private router: Router) { }
+
+  private evaluarRuta(url: string): void {
+  const rutasSinMenu = [
+    '/layout/solicitud',
+    '/layout/beneficios',
+    '/layout/actualizacion'
+  ];
+
+  this.mostrarMenu = !rutasSinMenu.includes(url);
+}
+
+salir() {
+  this.router.navigateByUrl('/login')
+  localStorage.clear()
+}
 
 }

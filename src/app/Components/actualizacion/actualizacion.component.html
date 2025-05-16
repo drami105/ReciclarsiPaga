@@ -1,0 +1,79 @@
+<br>
+<br>
+<div class="container">
+  <div class="left-panel">
+    <div class="col-12 col-md-12 divTransparente" style="padding-left: 1%; padding-right: 1%;">
+
+      <form autocomplete="off">
+        <div class="row mb-1">
+          <div class="col-12 col-md-12">
+            <h4><label class="form-label">Actualización de datos</label></h4>
+          </div>
+        </div>
+        <div class="row mb-1">
+          <div class="col-12 col-md-4">
+            <label class="form-label">Documento:</label>
+            <input type="text" [attr.disabled]="true" formControlName="documento"
+              class="form-control form-control-sm" />
+          </div>
+
+          <div class="col-12 col-md-8">
+            <label class="form-label">Nombres:</label>
+            <input type="text" [attr.disabled]="true" formControlName="nombres" class="form-control form-control-sm" />
+          </div>
+
+        </div>
+
+        <br>
+
+        <div class="row mb-1">
+
+          <div class="col-12 col-md-4">
+            <label class="form-label">Dirección:</label>
+            <input type="text" formControlName="direccion"
+              class="form-control form-control-sm" />
+          </div>
+          <div class="col-12 col-md-4">
+            <label class="form-label">Ciudad:</label>
+            <select formControlName="idCiudad" class="form-control" (change)="filtrarBarrios($event)">
+              <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">{{ ciudad.descripcion }}</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-md-4">
+            <label class="form-label">Barrio:</label>
+            <select formControlName="idBarrio" class="form-control">
+              <option *ngFor="let barrio of barriosFiltrados" [value]="barrio.idBarrio">{{ barrio.descripcion }}
+              </option>
+            </select>
+          </div>
+
+
+        </div>
+
+        <br>
+
+        <div class="row mb-1">
+
+          <div class="col-12 col-md-4">
+            <label class="form-label">Celular:</label>
+            <input type="text" [maxlength]="10" formControlName="telefono" class="form-control form-control-sm" />
+          </div>
+        </div>
+
+        <div class="row mb-1">
+          <div class="col-12 col-md-3">
+            <button class="btn success">Actualizar</button>
+          </div>
+          <div class="col-12 col-md-3">
+            <button class="btn danger" type="button" [routerLink]="['/layout']">Cancelar</button>
+          </div>
+        </div>
+
+        <br />
+        <br />
+      </form>
+
+    </div>
+  </div>
+</div>
