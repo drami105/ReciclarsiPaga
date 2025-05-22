@@ -32,8 +32,23 @@ export class GeneralService {
   }
 
   getSolicitudes(idUsuario: number): Observable<any[]> {
-  const url = `${environment.apiUrl}/Recoleccion/${idUsuario}`;
-  return this.http.get<any[]>(url);
+    const url = `${environment.apiUrl}/Recoleccion/${idUsuario}`;
+    return this.http.get<any[]>(url);
+  }
+
+  getPuntosPorUsuario(idUsuario: number): Observable<number> {
+    const url = `${this.apiUrl}/Puntos/usuario/${idUsuario}`;
+    return this.http.get<number>(url);
+  }
+
+  getKilogramosConfPorUsuario(idUsuario: number): Observable<number> {
+    const url = `${this.apiUrl}/Recoleccion/usuario/${idUsuario}`;
+    return this.http.get<number>(url);
+  }
+
+  getUsuarios(): Observable<any[]> {
+    const url = `${environment.apiUrl}/Usuario/detalle`;
+    return this.http.get<any[]>(url);
   }
 
 }

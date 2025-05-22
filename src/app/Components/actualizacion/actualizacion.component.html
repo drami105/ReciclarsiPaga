@@ -4,7 +4,7 @@
   <div class="left-panel">
     <div class="col-12 col-md-12 divTransparente" style="padding-left: 1%; padding-right: 1%;">
 
-      <form autocomplete="off">
+      <form autocomplete="off" [formGroup]="actualizaForm">
         <div class="row mb-1">
           <div class="col-12 col-md-12">
             <h4><label class="form-label">Actualización de datos</label></h4>
@@ -35,15 +35,15 @@
           </div>
           <div class="col-12 col-md-4">
             <label class="form-label">Ciudad:</label>
-            <select formControlName="idCiudad" class="form-control" (change)="filtrarBarrios($event)">
-              <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">{{ ciudad.descripcion }}</option>
+            <select formControlName="idCiudad" class="form-control" (change)="filtrarBarrios()">
+              <option *ngFor="let ciudad of ciudades" [value]="+ciudad.idCiudad">{{ ciudad.descripcion }}</option>
             </select>
           </div>
 
           <div class="col-12 col-md-4">
             <label class="form-label">Barrio:</label>
             <select formControlName="idBarrio" class="form-control">
-              <option *ngFor="let barrio of barriosFiltrados" [value]="barrio.idBarrio">{{ barrio.descripcion }}
+              <option *ngFor="let barrio of barriosFiltrados" [value]="+barrio.idBarrio">{{ barrio.descripcion }}
               </option>
             </select>
           </div>
@@ -63,7 +63,7 @@
 
         <div class="row mb-1">
           <div class="col-12 col-md-3">
-            <button class="btn success">Actualizar</button>
+            <button class="btn success" (click)="actualizaDatos()">Actualizar</button>
           </div>
           <div class="col-12 col-md-3">
             <button class="btn danger" type="button" [routerLink]="['/layout']">Cancelar</button>

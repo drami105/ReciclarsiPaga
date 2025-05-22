@@ -1,0 +1,161 @@
+<br>
+<br>
+<div class="container">
+  <div class="left-panel">
+    <div class="col-12 col-md-12 divTransparente" style="padding-left: 1%; padding-right: 1%;">
+
+      <form autocomplete="off" [formGroup]="actualizaForm">
+        <div class="row mb-1">
+          <div class="col-12 col-md-12">
+            <h4><label class="form-label">Gestión de usuarios</label></h4>
+          </div>
+        </div>
+
+        <div class="row mb-1">
+          <table class="table table-bordered table-hover table-container ">
+            <thead>
+              <tr>
+                <th>Correo</th>
+                <th>Tipo Documento</th>
+                <th>Documento</th>
+                <th>Nombres</th>
+                <th>Celular</th>
+                <th>Pefil</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of dataUsuarios">
+                <td>
+                  {{ usuario.correo }}
+                </td>
+                <td>
+                  {{ usuario.tipoDocumento }}
+                </td>
+                <td>
+                  {{ usuario.documento }}
+                </td>
+                <td>
+                  {{ usuario.nombreCompleto }}
+                </td>
+                <td>
+                  {{ usuario.telefono }}
+                </td>
+                <td>
+                  {{ usuario.idPerfil }}
+                </td>
+                <td>
+                  <button class="btn btn-sm btn-success me-2" (click)="editarUsuario(usuario)">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </button>
+                  <button class="btn btn-sm btn-danger" (click)="eliminarUsuario()">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row mb-1">
+
+          <div class="col-12 col-md-2">
+            <label class="form-label">Tipo Documento:</label>
+            <select formControlName="idTipoDocumento" class="form-control">
+              <option *ngFor="let tipooDocumento of tiposDocumento" [value]="tipooDocumento.idTipoDocumento">{{
+                tipooDocumento.descripcion }}</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-md-2">
+            <label class="form-label">Documento:</label>
+            <input type="text" formControlName="documento" class="form-control form-control-sm" />
+          </div>
+
+          <div class="col-12 col-md-2">
+            <label class="form-label">Nombres:</label>
+            <input type="text" formControlName="primerNombre" class="form-control form-control-sm" />
+          </div>
+
+          <div class="col-12 col-md-2">
+            <label class="form-label">&nbsp;</label>
+            <input type="text" formControlName="segundoNombre" class="form-control form-control-sm" />
+          </div>
+
+          <div class="col-12 col-md-2">
+            <label class="form-label">Apellidos:</label>
+            <input type="text" formControlName="primerApellido" class="form-control form-control-sm" />
+          </div>
+
+          <div class="col-12 col-md-2">
+            <label class="form-label">&nbsp;</label>
+            <input type="text" formControlName="segundoApellido" class="form-control form-control-sm" />
+          </div>
+
+        </div>
+
+        <div class="row mb-1">
+
+          <div class="col-12 col-md-2">
+            <label class="form-label">Celular:</label>
+            <input type="text" [maxlength]="10" formControlName="telefono" class="form-control form-control-sm" />
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label class="form-label">E-mail:</label>
+            <input type="email" formControlName="correo" class="form-control form-control-sm" />
+          </div>
+
+          <div class="col-12 col-md-3">
+            <label class="form-label">Dirección:</label>
+            <input type="text" formControlName="direccion" class="form-control form-control-sm" />
+          </div>
+
+          <div class="col-12 col-md-2">
+            <label class="form-label">Ciudad:</label>
+            <select formControlName="idCiudad" class="form-control" (change)="filtrarBarrios()">
+              <option *ngFor="let ciudad of ciudades" [value]="+ciudad.idCiudad">{{ ciudad.descripcion }}</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-md-2">
+            <label class="form-label">Barrio:</label>
+            <select formControlName="idBarrio" class="form-control">
+              <option *ngFor="let barrio of barriosFiltrados" [value]="+barrio.idBarrio">{{ barrio.descripcion }}
+              </option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row mb-1">
+          <div class="col-12 col-md-2">
+            <label class="form-label">Perfil:</label>
+            <select formControlName="idPerfil" class="form-control">
+              <option [value]=0>Administrador</option>
+              <option [value]=1>Hogar</option>
+              <option [value]=2>Agente</option>
+
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row mb-1">
+          <div class="col-12 col-md-3">
+            <button class="btn success" (click)="actualizaDatos()">Actualizar</button>
+          </div>
+          <div class="col-12 col-md-3">
+            <button class="btn danger" type="button" [routerLink]="['/layout']">Cancelar</button>
+          </div>
+        </div>
+
+        <br />
+        <br />
+      </form>
+
+    </div>
+  </div>
+</div>

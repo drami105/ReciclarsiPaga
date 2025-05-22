@@ -1,0 +1,19 @@
+.table-container {
+  width: 100%;           /* O ajusta a un valor fijo si prefieres */
+  max-height: 400px;     /* Limita la altura visible */
+  overflow-y: auto;      /* Scroll vertical si se desborda */
+  overflow-x: auto;      /* Scroll horizontal si hay columnas de más */
+  border: 1px solid #ccc;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: left;
+}

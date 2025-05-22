@@ -9,23 +9,25 @@ import { Router } from '@angular/router';
 import { Persona } from 'src/app/models/persona.model';
 
 @Component({
-  selector: 'app-actualizacion',
-  templateUrl: './actualizacion.component.html',
-  styleUrls: ['./actualizacion.component.css']
+  selector: 'app-admusuarios',
+  templateUrl: './admusuarios.component.html',
+  styleUrls: ['./admusuarios.component.css']
 })
-export class ActualizacionComponent {
+export class AdmusuariosComponent {
   ciudades: any[] = [];
   barrios: any[] = [];
   barriosFiltrados: any[] = [];
+  tiposDocumento: any[] = [];
   actualizaForm: UntypedFormGroup;
   resultStore: any = null;
   idUsuario: any = 0;
+  dataUsuarios: any;
 
-  constructor(private toastr: ToastrService, private fb: UntypedFormBuilder, private ciudadService: GeneralService, private personaService: PersonaService, private router: Router) {
+  constructor(private toastr: ToastrService, private fb: UntypedFormBuilder, private generalService: GeneralService, private personaService: PersonaService, private router: Router) {
 
     this.actualizaForm = this.fb.group({
       idPersona: [null],
-      documento: { value: null, disabled: true },
+      documento: { value: null },
       idTipoDocumento: [null],
       primerNombre: [''],
       segundoNombre: [''],
@@ -34,8 +36,10 @@ export class ActualizacionComponent {
       nombres: { value: '', disabled: true },
       idCiudad: [null],
       direccion: ['', Validators.required],
+      correo: ['', Validators.required],
       idBarrio: [null, Validators.required],
       telefono: [null, [Validators.required, Validators.minLength(10)]],
+      idPerfil: [0, Validators.required]
     });
 
   }
@@ -50,6 +54,8 @@ export class ActualizacionComponent {
         this.getCiudades();
         this.getBarrios();
         this.getPersonaID(this.idUsuario);
+        this.getTiposDocumento();
+        this.consultarUsuarios();
 
       }
     } catch (error) {
@@ -59,7 +65,7 @@ export class ActualizacionComponent {
 
 
   getCiudades() {
-    this.ciudadService.getCiudades().subscribe({
+    this.generalService.getCiudades().subscribe({
       next: (data) => {
         this.ciudades = data;
       },
@@ -73,7 +79,7 @@ export class ActualizacionComponent {
   }
 
   getBarrios() {
-    this.ciudadService.getBarrios().subscribe({
+    this.generalService.getBarrios().subscribe({
       next: (data) => {
         this.barrios = data;
       },
@@ -122,25 +128,20 @@ export class ActualizacionComponent {
         positionClass: 'toast-bottom-right',
       });
     } else {
+      const idPerfil = this.actualizaForm.get('idPerfil')?.value;
       const {
-        documento,
-        idCiudad,
-        idTipoDocumento,
         nombres,
-        primerApellido,
-        primerNombre,
-        segundoApellido,
-        segundoNombre,
         ...persona
       } = this.actualizaForm.value;
 
       persona.idBarrio = +persona.idBarrio;
       persona.telefono = +persona.telefono;
+      persona.documento = +persona.documento;
 
-
-      this.personaService.actualizarPersona(persona.idPersona, persona)
+      this.personaService.actualizarPersonaCompleta(persona.idPersona,idPerfil, persona)
         .subscribe({
           next: () => {
+            this.consultarUsuarios();
             this.toastr.success('Datos actualizados correctamente.', 'Exitoso', {
               timeOut: 3000,
               positionClass: 'toast-bottom-right',
@@ -157,4 +158,38 @@ export class ActualizacionComponent {
 
   }
 
+  getTiposDocumento() {
+    this.generalService.getTiposDocumento().subscribe({
+      next: (data) => {
+        this.tiposDocumento = data;
+      },
+      error: (err) => {
+        this.toastr.error('Error recuperando datos' + err, 'Error', {
+          timeOut: 3000,
+          positionClass: 'toast-bottom-right',
+        });
+      }
+    });
+  }
+
+  consultarUsuarios() {
+
+    this.generalService.getUsuarios().subscribe({
+      next: (data) => {
+        this.dataUsuarios = data;
+      },
+      error: (err) => {
+        console.error('Error al cargar usuarios:', err);
+      }
+    });
+
+  }
+
+  editarUsuario(item: any){
+    this.actualizaForm.patchValue(item);
+  }
+
+  eliminarUsuario(){
+
+  }
 }

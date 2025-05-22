@@ -1,16 +1,16 @@
 <br>
-<div class="menu-container">
+<div *ngIf="idPerfil == 1" class="menu-container">
     <!-- Tarjeta 1 -->
     <div class="card">
       <img src="../../../assets/Solicitud.png" alt="Aportes">
-      <p><strong>Mis Aportes:</strong><br> Kg.</p>
+      <p><strong>Mis Aportes:</strong><br>{{aportesActuales}}  Kg.</p>
       <button class="btn success" routerLink="/layout/solicitud">Solicitar recolección</button>
     </div>
 
     <!-- Tarjeta 2 -->
     <div class="card">
       <img src="../../../assets/Puntos.png" alt="Puntos">
-      <p><strong>Mis Puntos:</strong><br>Puntos</p>
+      <p><strong>Mis Puntos:</strong><br>{{puntosActuales}} Puntos</p>
       <button class="btn success" routerLink="/layout/beneficios">Redimir puntos</button>
     </div>
 
@@ -19,5 +19,15 @@
       <img src="../../../assets/ActualizaDatos.png" alt="Actualizar datos">
       <p><strong>&nbsp;</strong><br>&nbsp;</p>
       <button class="btn success" routerLink="/layout/actualizacion">Actualizar datos</button>
+    </div>
+</div>
+
+<div *ngIf="idPerfil == 0" class="menu-container">
+      <!-- Tarjeta 3 -->
+    <div class="card">
+      <img src="../../../assets/ActualizaDatos.png" alt="Configuración">
+      <button class="btn success" routerLink="/layout/admusuarios">Gestión de usuarios</button>
+      <button class="btn success" routerLink="/layout/actualizacion">Gestión de beneficios</button>
+      <button class="btn success" routerLink="/layout/actualizacion">Parámetros</button>
     </div>
   </div>

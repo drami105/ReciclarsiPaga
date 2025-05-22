@@ -6,6 +6,7 @@ import { LayouthComponent } from './Components/layouth/layouth.component';
 import { SolicitudComponent } from './Components/solicitud/solicitud.component';
 import { BeneficiosComponent } from './Components/beneficios/beneficios.component';
 import { ActualizacionComponent } from './Components/actualizacion/actualizacion.component';
+import { AdmusuariosComponent } from './Components/admusuarios/admusuarios.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   children: [
     { path: 'solicitud', component: SolicitudComponent },
     { path: 'beneficios', component: BeneficiosComponent },
-    { path: 'actualizacion', component: ActualizacionComponent }
+    { path: 'actualizacion', component: ActualizacionComponent },
+    { path: 'admusuarios', component: AdmusuariosComponent }
   ]},
   { path: '**', redirectTo: 'login' }
 ];

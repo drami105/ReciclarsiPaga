@@ -14,6 +14,7 @@ import { SolicitudComponent } from './Components/solicitud/solicitud.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BeneficiosComponent } from './Components/beneficios/beneficios.component';
 import { ActualizacionComponent } from './Components/actualizacion/actualizacion.component';
+import { AdmusuariosComponent } from './Components/admusuarios/admusuarios.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ActualizacionComponent } from './Components/actualizacion/actualizacion
     SolicitudComponent,
     BeneficiosComponent,
     ActualizacionComponent,
+    AdmusuariosComponent,
   ],
   imports: [
     BrowserModule,

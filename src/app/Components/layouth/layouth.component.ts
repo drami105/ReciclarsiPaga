@@ -45,7 +45,8 @@ constructor(private router: Router) { }
   const rutasSinMenu = [
     '/layout/solicitud',
     '/layout/beneficios',
-    '/layout/actualizacion'
+    '/layout/actualizacion',
+    '/layout/admusuarios'
   ];
 
   this.mostrarMenu = !rutasSinMenu.includes(url);
